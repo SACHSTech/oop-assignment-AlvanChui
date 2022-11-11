@@ -6,42 +6,52 @@ public class GamesLibrary extends Games{
     //VARIABLES
     private double totalPlaytime;
     private String lastPlayed;
-    private int unlockedAchievements;
+    private int unlockedAchv;
+    private int totalAchv;
     private double percentCompletion;
-    
+
     //CONSTRUCTOR
-    public GamesLibrary(String gameNameStr, boolean installedBool, boolean DeckSupportBool , double totalPlaytimeStr, String lastPlayedStr, int unlockedAchievementsInt, int totalAchievementsInt){
-        super(gameNameStr, true, installedBool, DeckSupportBool, totalAchievementsInt);
+    public GamesLibrary(String gameNameStr, boolean installedBool, boolean DeckSupportBool , double totalPlaytimeStr, String lastPlayedStr, int unlockedAchvInt, int totalAchvInt){
+        super(gameNameStr, true, installedBool, DeckSupportBool);
         totalPlaytime = totalPlaytimeStr;
         lastPlayed = lastPlayedStr;
-        unlockedAchievements = unlockedAchievementsInt;
+        unlockedAchv = unlockedAchvInt;
+        totalAchv = totalAchvInt;
     }
     
     //METHODS
+
+    //SETTERS
+    public void setPercentCompletion() {
+        percentCompletion = getUnlockedAchv() / getTotalAchv() * 100;
+    }
+    
+    //GETTERS
     public double getTotalPlaytime() {
         return totalPlaytime;
     }
     public String getLastPlayed() {
         return lastPlayed;
     }
-    public int getUnlockedAchievements() {
-        return unlockedAchievements;
+    public int getUnlockedAchv() {
+        return unlockedAchv;
+    }
+    public int getTotalAchv() {
+        return totalAchv;
     }
     public double getPercentCompletion() {
         return percentCompletion;
     }
-    public void setPercentCompletion() {
-        percentCompletion = getUnlockedAchievements() / super.getTotalAchievements() * 100;
-    }
 
-    public void Game(){
-        System.out.println("-------------------------------------------------------------------");
-        System.out.println(super.getGameName() + "is in your libary. ");
-        System.out.println(GameInstalled()); 
+    public void Game() {
+    
+        System.out.println("========================================");
+        System.out.println(GameInLibrary()); 
         System.out.println("Totalplaytime: " + getTotalPlaytime());
         System.out.println("Last played: " + getLastPlayed());
-        System.out.println("Achievements: " + getUnlockedAchievements() + "/" + super.getTotalAchievements() + "unlocked (" + getPercentCompletion() + "% completion) ");
+        System.out.println("Achievements: " + getUnlockedAchv() + "/" + getTotalAchv() + "unlocked (" + getPercentCompletion() + "% completion) ");
         System.out.println(SteamDeckCompatability());
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("========================================");
+
     }
 }

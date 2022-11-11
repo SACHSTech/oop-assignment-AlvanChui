@@ -4,39 +4,40 @@ import Steam.*;
 
 public class FriendList {
     //VARIABLES
-    private String name;
-    private String nickname;
-    private boolean online;
+    private String frdName;
+    private String frdNickname;
+    private boolean frdOnline;
     private String nowPlaying;
-    public int totalFriends = 0;
-    public int friendsOnline = 0;
+    public int totalFrds = 0;
+    public int numFrdsOnline = 0;
 
     //CONSTRUCTOR
     public FriendList(String nameStr, String nicknameStr, boolean onlineBool
     , String nowPlayingStr){
-        name = nameStr;
-        nickname = nicknameStr;
-        online = onlineBool;
+        frdName = nameStr;
+        frdNickname = nicknameStr;
+        frdOnline = onlineBool;
         nowPlaying = nowPlayingStr;
         
-        if (online)
-            friendsOnline++;
-        totalFriends++;
+        if (frdOnline)
+            numFrdsOnline++;
+        totalFrds++;
     }
 
     //METHODS
+    
     public String NoOfFrdsOnline(){
-        return friendsOnline + " out of " + totalFriends + "are online."; 
+        return numFrdsOnline + " out of " + totalFrds + "are online."; 
     }
     public String friendStatus() {
-        if (online && nowPlaying != ""){ 
-            return nickname + "(" + name + ") is online, currently playing " + nowPlaying + ". ";
+        if (frdOnline && nowPlaying != ""){ 
+            return frdNickname + "(" + frdName + ") is online, currently playing " + nowPlaying + ". ";
         }
-        else if(online){
-            return nickname + "(" + name + ") is online. ";
+        else if(frdOnline){
+            return frdNickname + "(" + frdName + ") is online. ";
         }
         else{
-            return nickname + "(" + name + ") is offline. ";
+            return frdNickname + "(" + frdName + ") is offline. ";
         }
     }
 }
