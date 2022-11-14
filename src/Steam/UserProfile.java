@@ -5,16 +5,22 @@ public class UserProfile {
     private String username;
     private String realName;
     private String psw;
-    private String bio;
     private String location;
-    private int balanace;
+    private char gender;
+    private String birthday;
+    private String email;
+    private double balanace;
 
     //CONSTRUCTOR
-    public UserProfile(String usernameStr, String realNameStr, String pswStr, String bioStr, String locationStr, int balanceInt) {
+    public UserProfile(String usernameStr, String realNameStr, String pswStr, String locationStr, char genderChar, String birthdayStr, String emailStr, double balanceDouble) {
         username = usernameStr;
-        bio = bioStr;
+        realName = realNameStr;
+        psw = pswStr;
         location = locationStr;
-        balanace = balanceInt;
+        gender = genderChar;
+        birthday = birthdayStr;
+        email = emailStr;
+        balanace = balanceDouble;
     }
 
     //METHODS
@@ -29,13 +35,16 @@ public class UserProfile {
     public String getPsw() {
         return psw;
     }
-    public String getBio() {
-        return bio;
-    }
     public String getLocation() {
         return location;
     }
-    public int getBalanace() {
+    public Character getGender() {
+        return gender;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public double getBalanace() {
         return balanace;
     }
 }
