@@ -95,7 +95,7 @@ public class StorePage extends Games {
         return gameLength;
     }
     public void setPrice() {
-        price = markedPrice * discount / 100;
+        price = markedPrice * (100-discount) / 100;
     }
     public double getPrice() {
         return price;
@@ -125,7 +125,7 @@ public class StorePage extends Games {
             System.out.println(GameInLibrary());
         if(isInLibrary()) {
             System.out.println("Marked Price: " + getMarkedPrice());
-            System.out.println("Price: " + getPrice() + " (" + getDiscount() + "% discount)");
+            System.out.println("Price: " + getPrice() + " (-" + getDiscount() + "%)");
         }
         System.out.println("------------ Reviews ------------");
         System.out.println(getRating() + " (" + getPercentRating() + "% of " + getTotalReviews() + ") ALL TIME");

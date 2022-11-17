@@ -25,19 +25,36 @@ public class FriendList {
     }
 
     //METHODS
-    
-    public String NoOfFrdsOnline(){
-        return numFrdsOnline + " out of " + totalFrds + "are online."; 
+    public String getFrdName() {
+        return frdName;
+    }
+    public String getFrdNickname() {
+        return frdNickname;
+    }
+    public String getNowPlaying() {
+        return nowPlaying;
+    }
+    public int getNumFrdsOnline() {
+        return numFrdsOnline;
+    }
+    public int getTotalFrds() {
+        return totalFrds;
+    }
+    public boolean isFrdOnline() {
+        return frdOnline;
+    }
+    public String TotalNoOfFrdsOnline(){
+        return getNumFrdsOnline() + " out of " + getTotalFrds() + "are online."; 
     }
     public String friendStatus() {
-        if (frdOnline && nowPlaying != ""){ 
-            return frdNickname + "(" + frdName + ") is online, currently playing " + nowPlaying + ". ";
+        if (isFrdOnline() && getNowPlaying() != ""){ 
+            return getFrdNickname() + "(" + getFrdName() + ") is online, currently playing " + getNowPlaying() + ". ";
         }
-        else if(frdOnline){
-            return frdNickname + "(" + frdName + ") is online. ";
+        else if(isFrdOnline()){
+            return getFrdNickname() + "(" + getFrdName() + ") is online. ";
         }
         else{
-            return frdNickname + "(" + frdName + ") is offline. ";
+            return getFrdNickname() + "(" + getFrdName() + ") is offline. ";
         }
     }
 }

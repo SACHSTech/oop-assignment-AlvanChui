@@ -38,6 +38,9 @@ public class UserProfile {
     public String getLocation() {
         return location;
     }
+    public String getBirthday() {
+        return birthday;
+    }
     public Character getGender() {
         return gender;
     }
@@ -46,5 +49,19 @@ public class UserProfile {
     }
     public double getBalanace() {
         return balanace;
+    }
+    /**
+     * Displays the user's profile
+     */
+    public void DisplayProfile(){
+        System.out.println("========================================");
+        System.out.println("Username:" + getUsername()); 
+        System.out.println("Email Address: " + getEmail());
+        System.out.println("Steam Wallet Balance: $" + getBalanace());
+        System.out.println("Store Location: " + getLocation());
+        System.out.println("Realname: " + getRealName());
+        System.out.println("Gender: " + getGender());
+        System.out.println("Birthday: " + getBirthday());
+        System.out.println("========================================");
     }
 }

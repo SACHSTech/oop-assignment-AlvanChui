@@ -29,9 +29,12 @@ public class Games {
     public boolean isInstalled() {
         return installed;
     }
+    public boolean isDeckSupport() {
+        return DeckSupport;
+    }
 
     public String SteamDeckCompatability() {
-        if (DeckSupport)
+        if (isDeckSupport())
             return getGameName() + " supports Steam Deck. ";
         else 
             return getGameName() + " supports Steam Deck. ";
