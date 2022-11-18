@@ -19,14 +19,12 @@ public class Main {
         System.out.print("Enter your real name: ");
         String realName = keyboard.readLine();
         System.out.print("Enter your gender: ");
-        char gender = (char)keyboard.read();
+        String gender = keyboard.readLine();
         System.out.print("Enter your birthday: ");
         String birthday = keyboard.readLine();
-        System.out.println();
-
-        double amount = 0.0;
         System.out.print("Do you want to deposit to your Steam wallet?(Y/N)");
         String answer = keyboard.readLine();
+        double amount = 0.0;
         if (answer.equalsIgnoreCase("Y")) {
             System.out.print("How much do you want to deposit? $");
             amount += Double.parseDouble(keyboard.readLine());
@@ -44,6 +42,7 @@ public class Main {
         
         ArrayList<String> gameLibArrayList = new ArrayList<String>();
         ArrayList<String> storeArrayList = new ArrayList<String>();
+        ArrayList<String> FrdsArrayList = new ArrayList<String>();
 
         //existing games
         GamesLibrary MGRR = new GamesLibrary("Metal Gear Rising: Revengence", true, false, 12.5, "12 June, 2022",20, 30);
@@ -69,7 +68,7 @@ public class Main {
             menu = keyboard.readLine();
 
             if(menu.equals("Store")){
-                System.out.print("Enter a game's info: ");
+                System.out.print("Enter a game's Name: ");
                 String gameName = keyboard.readLine();
                 boolean gameExist = false;
                 int counter = -1;
@@ -92,7 +91,7 @@ public class Main {
                         System.out.print("How much is the game?");
                         double cost = Double.parseDouble(keyboard.readLine());
                         int discount = 0;
-                        System.out.print("Is there any discount right now? ");
+                        System.out.print("Is there any discount right now?(Y/N) ");
                         String haveDiscount = keyboard.readLine();
                         if (haveDiscount.equalsIgnoreCase("Y")){
                             System.out.print("How many % off? ");
@@ -103,7 +102,7 @@ public class Main {
                         System.out.print("How long is the game? ");
                         int gameLength = Integer.parseInt(keyboard.readLine());
                         boolean deckSupport = false;
-                        System.out.print("Does the game supports steam deck? ");
+                        System.out.print("Does the game supports steam deck?(Y/N) ");
                         String SDSupport = keyboard.readLine();
                         if(SDSupport.equalsIgnoreCase("Y")){
                             deckSupport = true;
@@ -122,14 +121,20 @@ public class Main {
                         System.out.println();
 
                         StorePage newGame = new StorePage(gameName, false, false, deckSupport, cost, discount, developer, publisher, releaseDate, gameLength, reviews, posReviews, recentReviews, posRecentReviews);
+                        newGame.setPrice();
+                        newGame.setPercentRating();
+                        newGame.setRating();
+                        newGame.setRecentPercentRating();
+                        newGame.setRecentRating();
                         System.out.println("Successfully filled in the game's info. ");
                         System.out.println("------------------------------------");
                         newGame.gameStorePage();
+                        
                         if(newGame.isInLibrary() == false){
                             System.out.println("The game is not in your library, do you want to buy it?(Y/N) ");
                             String add = keyboard.readLine();
                             if (add.equalsIgnoreCase("Y")){
-                                System.out.println("The game" +  newGame.getGameName() + "costs" + newGame.getPrice() + ".");
+                                System.out.println("The game" +  newGame.getGameName() + "costs" +String.format("%.2f", newGame.getPrice()) + ".");
                                 System.out.println("========== Purchase Confirmation==========");
                                 if (newGame.getPrice() < user.getBalanace()){
                                     System.out.println("you have $" + user.getBalanace() + ", do you want to purchase the game? ");

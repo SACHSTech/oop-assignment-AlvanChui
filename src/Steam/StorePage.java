@@ -17,6 +17,7 @@ public class StorePage extends Games {
     private double recentPercentRating;
     private String recentRating;
 
+
     //CONSTRUCTOR
     public StorePage(String gameNameString, boolean inLibraryBool, boolean installedBool, boolean DeckSupportBool, double markedPriceDouble, int discountInt, String developerString, String publisherString, String releaseDateString, int gameLengthInt, int totalReviewsInt, int positiveReviewsInt, int recentReviewsInt, int recentPositiveReviewsInt){
         
@@ -74,6 +75,9 @@ public class StorePage extends Games {
         else
             recentRating = "Overwhelmingly negative";
     }
+    public void setPrice() {
+        price = getMarkedPrice() * (100-getDiscount()) / 100;
+    }
 
     //GETTERS
     public String getDeveloper() {
@@ -93,9 +97,6 @@ public class StorePage extends Games {
     }
     public int getGameLength() {
         return gameLength;
-    }
-    public void setPrice() {
-        price = getMarkedPrice() * (100-getDiscount()) / 100;
     }
     public double getPrice() {
         return price;
