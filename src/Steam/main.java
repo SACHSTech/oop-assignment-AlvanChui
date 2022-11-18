@@ -62,76 +62,110 @@ public class Main {
         storeArrayList.add(GTAVI_Store.getGameName());
 
 
-        System.out.println("Which page you want to go to?(| Store | Library | Friends | Profile | Exit Steam |");
-        String menu = keyboard.readLine();
         
-        if(menu.equals("Store")){
-            System.out.print("Enter a game's info: ");
-            String gameName = keyboard.readLine();
-            for(int i = 0; i < storeArrayList.size(); i++){
-                boolean GameExist = false;
-                if (GameName.equals(storeArrayList.get(i)))
-                    GameExist = true;
-            }
-            if (GameExist = false){
-                storeArrayList.add(gameName);
-                System.out.println("A new game detected, would you like to fill in the game's info?(Y/N)");
-                String reply = keyboard.readLine();
-                if (reply.equalsIgnoreCase("Y")){
-                    System.out.print("Who is the developer? ");
-                    String developer = keyboard.readLine();
-                    System.out.print("Who is the publisher? "); 
-                    String publisher = keyboard.readLine();
-                    System.out.print("How much is the game?");
-                    double cost = Double.parseDouble(keyboard.readLine());
-                    double discount = 0;
-                    System.out.print("Is there any discount right now? ");
-                    String haveDiscount = keyboard.readLine();
-                    if (haveDiscount.equalsIgnoreCase("Y")){
-                        System.out.print("How many % off? ");
-                        discount = Double.parseDouble(keyboard.readLine());
+        String menu = "";
+        while(!(menu.equals("Exit Steam"))){
+            System.out.println("Which page you want to go to?(| Store | Library | Friends | Profile | Exit Steam |");
+            menu = keyboard.readLine();
+
+            if(menu.equals("Store")){
+                System.out.print("Enter a game's info: ");
+                String gameName = keyboard.readLine();
+                boolean gameExist = false;
+                int counter = -1;
+                for(int i = 0; i < storeArrayList.size(); i++){
+                    if (gameName.equals(storeArrayList.get(i))){
+                        gameExist = true;
+                        counter = i;
+                        break;
                     }
-                    //entering data of the game
-                    System.out.print("When was the release date? ");
-                    String releaseDate = keyboard.readLine();
-                    System.out.print("How long is the game? ");
-                    String gameLength = keyboard.readLine();
-                    System.out.println("Data of all time reviews: ");
-                    System.out.print("Total number of reviews? ");
-                    int reviews = Integer.parseInt(keyboard.readLine());
-                    System.out.print("Number of positive reviews? ");
-                    int posReviews = Integer.parseInt(keyboard.readLine());
-                    System.out.println("Data of recent reviews: ");
-                    System.out.print("Number of recent reviews? ");
-                    int recentReviews = Integer.parseInt(keyboard.readLine());
-                    System.out.print("Numbr of recent positive reviews? ");
-                    int posRecentReviews = Integer.parseInt(keyboard.readLine());                   
-                    System.out.println();
-                    System.out.println("Successfully filled in the game's info. ");
-                    System.out.println();
+                }
+                if (gameExist == false){
+                    storeArrayList.add(gameName);
+                    System.out.println("Game deceted, would you like to fill in the game's info?(Y/N)");
+                    String reply = keyboard.readLine();
+                    if (reply.equalsIgnoreCase("Y")){
+                        System.out.print("Who is the developer? ");
+                        String developer = keyboard.readLine();
+                        System.out.print("Who is the publisher? "); 
+                        String publisher = keyboard.readLine();
+                        System.out.print("How much is the game?");
+                        double cost = Double.parseDouble(keyboard.readLine());
+                        int discount = 0;
+                        System.out.print("Is there any discount right now? ");
+                        String haveDiscount = keyboard.readLine();
+                        if (haveDiscount.equalsIgnoreCase("Y")){
+                            System.out.print("How many % off? ");
+                            discount = Integer.parseInt(keyboard.readLine());
+                        }
+                        System.out.print("When was the release date? ");
+                        String releaseDate = keyboard.readLine();
+                        System.out.print("How long is the game? ");
+                        int gameLength = Integer.parseInt(keyboard.readLine());
+                        boolean deckSupport = false;
+                        System.out.print("Does the game supports steam deck? ");
+                        String SDSupport = keyboard.readLine();
+                        if(SDSupport.equalsIgnoreCase("Y")){
+                            deckSupport = true;
+                        }
+
+                        System.out.println("Data of all time reviews: ");
+                        System.out.print("Total number of reviews? ");
+                        int reviews = Integer.parseInt(keyboard.readLine());
+                        System.out.print("Number of positive reviews? ");
+                        int posReviews = Integer.parseInt(keyboard.readLine());
+                        System.out.println("Data of recent reviews: ");
+                        System.out.print("Number of recent reviews? ");
+                        int recentReviews = Integer.parseInt(keyboard.readLine());
+                        System.out.print("Numbr of recent positive reviews? ");
+                        int posRecentReviews = Integer.parseInt(keyboard.readLine());
+                        System.out.println();
+
+                        StorePage newGame = new StorePage(gameName, false, false, deckSupport, cost, discount, developer, publisher, releaseDate, gameLength, reviews, posReviews, recentReviews, posRecentReviews);
+                        System.out.println("Successfully filled in the game's info. ");
+                        System.out.println("------------------------------------");
+                        newGame.gameStorePage();
+                        if(newGame.isInLibrary() == false){
+                            System.out.println("The game is not in your library, do you want to buy it?(Y/N) ");
+                            String add = keyboard.readLine();
+                            if (add.equalsIgnoreCase("Y")){
+                                System.out.println("The game" +  newGame.getGameName() + "costs" + newGame.getPrice() + ".");
+                                System.out.println("========== Purchase Confirmation==========");
+                                if (newGame.getPrice() < user.getBalanace()){
+                                    System.out.println("you have $" + user.getBalanace() + ", do you want to purchase the game? ");
+                                }
+                                else{
+                                    System.out.println("you have $" + user.getBalanace() + ", you dont have enough money in your steam wallet");
+
+                                }
+                            }
+                        }
+                    }
+                    System.out.println("Return to Home page...");
                 }
             }
-        }
-        else if(menu.equals("Library")){
-            System.out.println("-------------Games List-------------");
-            for(int i = 0; i < gameLibArrayList.size(); i++){
-                System.out.println(gameLibArrayList.get(i));
+            else if(menu.equals("Library")){
+                System.out.println("-------------Games List-------------");
+                for(int i = 0; i < gameLibArrayList.size(); i++){
+                    System.out.println(gameLibArrayList.get(i));
+                }
+                System.out.println("------------------------------------");
+                System.out.print("Check Game Info: ");
+                String OpenedGame = keyboard.readLine();
             }
-            System.out.println("------------------------------------");
-            System.out.print("Check Game Info: ");
-            String OpenedGame = keyboard.readLine();
-        }
-        else if(menu.equals("Friends")){
-            
-        }
-        else if(menu.equals("Profile")){
-            user.DisplayProfile();
-        }
-        else if(menu.equals("Exit Steam")){
-            System.exit(0);
-        }
-        else{
-            System.out.println("Page not found");
+            else if(menu.equals("Friends")){
+                
+            }
+            else if(menu.equals("Profile")){
+                user.DisplayProfile();
+            }
+            else if(menu.equals("Exit Steam")){
+                System.exit(0);
+            }
+            else{
+                System.out.println("Page not found.");
+                System.out.println("Return to Home page...");
+            }
         }
     }
 }

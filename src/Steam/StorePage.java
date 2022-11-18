@@ -37,39 +37,39 @@ public class StorePage extends Games {
 
     //SETTERS
     public void setPercentRating(){
-        percentRating = positiveReviews / totalReviews * 100;
+        percentRating = getPositiveReviews() / getTotalReviews() * 100;
     }
     public void setRating() {
-        if (percentRating >= 90)
+        if (getPercentRating() >= 90)
             rating = "Overwhelmingly positive";
-        else if (percentRating >= 75)
+        else if (getPercentRating() >= 75)
             rating = "Mostly positive";
-        else if (percentRating >= 60)
+        else if (getPercentRating() >= 60)
             rating = "Positive";
-        else if (percentRating >= 40)
+        else if (getPercentRating() >= 40)
             rating = "Mixed";
-        else if (percentRating >= 25)
+        else if (getPercentRating() >= 25)
             rating = "Negative";
-        else if (percentRating >= 10)
+        else if (getPercentRating() >= 10)
             rating = "Mostly negative";
         else 
             rating = "Overwhelmingly negative";
     }
     public void setRecentPercentRating() {
-        recentPercentRating = recentPositiveReviews / recentReviews * 100;
+        recentPercentRating = getRecentPositiveReviews() / getRecentReviews() * 100;
     }
     public void setRecentRating() {
-        if (recentPercentRating >= 90)
+        if (getRecentPercentRating() >= 90)
             recentRating = "Overwhelmingly positive";
-        else if (recentPercentRating >= 75)
+        else if (getRecentPercentRating() >= 75)
             recentRating = "Mostly positive";
-        else if (recentPercentRating >= 60)
+        else if (getRecentPercentRating() >= 60)
             recentRating = "Positive";
-        else if (recentPercentRating >= 40)
+        else if (getRecentPercentRating() >= 40)
             recentRating = "Mixed";
-        else if (recentPercentRating >= 25)
+        else if (getRecentPercentRating() >= 25)
             recentRating = "Negative";
-        else if (recentPercentRating >= 10)
+        else if (getRecentPercentRating() >= 10)
             recentRating = "Mostly negative";
         else
             recentRating = "Overwhelmingly negative";
@@ -95,7 +95,7 @@ public class StorePage extends Games {
         return gameLength;
     }
     public void setPrice() {
-        price = markedPrice * (100-discount) / 100;
+        price = getMarkedPrice() * (100-getDiscount()) / 100;
     }
     public double getPrice() {
         return price;
@@ -103,8 +103,14 @@ public class StorePage extends Games {
     public int getTotalReviews() {
         return totalReviews;
     }
+    public int getPositiveReviews() {
+        return positiveReviews;
+    }
     public int getRecentReviews() {
         return recentReviews;
+    }
+    public int getRecentPositiveReviews() {
+        return recentPositiveReviews;
     }
     public double getPercentRating() {
         return percentRating;
@@ -120,17 +126,15 @@ public class StorePage extends Games {
     }
     public void gameStorePage() {
 
-        System.out.println("========== " + getGameName() + " ==========");
-        System.out.println();
-            System.out.println(GameInLibrary());
-        if(isInLibrary()) {
+        System.out.println("============ " + getGameName() + " ============");
+        System.out.println(GameInLibrary());
+        if(!isInLibrary()) {
             System.out.println("Marked Price: " + getMarkedPrice());
             System.out.println("Price: " + getPrice() + " (-" + getDiscount() + "%)");
         }
         System.out.println("------------ Reviews ------------");
         System.out.println(getRating() + " (" + getPercentRating() + "% of " + getTotalReviews() + ") ALL TIME");
-        System.out.println(getRecentRating() + " (" + getRecentPercentRating() + "% of" + getRecentReviews() + ") RECENT");
-        System.out.println();
+        System.out.println(getRecentRating() + " (" + getRecentPercentRating() + "% of " + getRecentReviews() + ") RECENT");
         System.out.println("----- Additional Information -----");
         System.out.println("Developer: " + getDeveloper());
         System.out.println("Publisher: " + getPublisher());
