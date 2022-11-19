@@ -1,7 +1,5 @@
 package Steam;
 
-import Steam.*;
-
 public class Games {
     //VARIABLES
     private String gameName;

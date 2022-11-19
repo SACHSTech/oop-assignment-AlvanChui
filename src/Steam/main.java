@@ -1,7 +1,6 @@
 package Steam;
 
 import java.io.*;
-import Steam.*;
 import java.util.ArrayList;
 
 public class Main {

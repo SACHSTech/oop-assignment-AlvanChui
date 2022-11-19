@@ -72,6 +72,10 @@ public class UserProfile {
     public void deposit(double amount) {
         this.balance += amount;
     }
+    public void purchase(double amount) {
+        this.balance -= amount;
+    }
+
     /**
      * Displays the user's profile
      */

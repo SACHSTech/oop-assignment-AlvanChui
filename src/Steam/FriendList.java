@@ -1,7 +1,5 @@
 package Steam;
 
-import Steam.*;
-
 public class FriendList {
     //VARIABLES
     private String frdUsername;

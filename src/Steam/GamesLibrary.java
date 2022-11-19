@@ -1,7 +1,5 @@
 package Steam;
 
-import Steam.*;
-
 public class GamesLibrary extends Games{
     //VARIABLES
     private double totalPlaytime;

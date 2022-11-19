@@ -1,4 +1,5 @@
 package Steam;
+
 public class StorePage extends Games {
     //VARIABLES
     private double markedPrice;
