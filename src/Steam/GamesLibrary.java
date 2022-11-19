@@ -43,7 +43,7 @@ public class GamesLibrary extends Games{
         return percentCompletion;
     }
 
-    public void Game() {
+    public String toString() {
     
         System.out.println("========================================");
         System.out.println(GameInLibrary()); 
@@ -51,7 +51,6 @@ public class GamesLibrary extends Games{
         System.out.println("Last played: " + getLastPlayed());
         System.out.println("Achievements: " + getUnlockedAchv() + "/" + getTotalAchv() + "unlocked (" + getPercentCompletion() + "% completion) ");
         System.out.println(SteamDeckCompatability());
-        System.out.println("========================================");
-
+        return "========================================";
     }
 }

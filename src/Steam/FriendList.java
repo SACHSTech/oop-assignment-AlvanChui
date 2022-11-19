@@ -4,29 +4,23 @@ import Steam.*;
 
 public class FriendList {
     //VARIABLES
-    private String frdName;
+    private String frdUsername;
     private String frdNickname;
     private boolean frdOnline;
     private String nowPlaying;
-    public int totalFrds = 0;
-    public int numFrdsOnline = 0;
 
     //CONSTRUCTOR
-    public FriendList(String nameStr, String nicknameStr, boolean onlineBool
+    public FriendList(String nameStr, String nicknameStr, boolean frdOnlineBool
     , String nowPlayingStr){
-        frdName = nameStr;
+        frdUsername = nameStr;
         frdNickname = nicknameStr;
-        frdOnline = onlineBool;
+        frdOnline = frdOnlineBool;
         nowPlaying = nowPlayingStr;
-        
-        if (frdOnline)
-            numFrdsOnline++;
-        totalFrds++;
     }
 
     //METHODS
-    public String getFrdName() {
-        return frdName;
+    public String getFrdUsername() {
+        return frdUsername;
     }
     public String getFrdNickname() {
         return frdNickname;
@@ -34,27 +28,18 @@ public class FriendList {
     public String getNowPlaying() {
         return nowPlaying;
     }
-    public int getNumFrdsOnline() {
-        return numFrdsOnline;
-    }
-    public int getTotalFrds() {
-        return totalFrds;
-    }
     public boolean isFrdOnline() {
         return frdOnline;
     }
-    public String TotalNoOfFrdsOnline(){
-        return getNumFrdsOnline() + " out of " + getTotalFrds() + "are online."; 
-    }
-    public String friendStatus() {
+    public String toString() {
         if (isFrdOnline() && getNowPlaying() != ""){ 
-            return getFrdNickname() + "(" + getFrdName() + ") is online, currently playing " + getNowPlaying() + ". ";
+            return getFrdNickname() + "(" + getFrdUsername() + "), online. Currently playing " + getNowPlaying() + ". ";
         }
         else if(isFrdOnline()){
-            return getFrdNickname() + "(" + getFrdName() + ") is online. ";
+            return getFrdNickname() + "(" + getFrdUsername() + "), online. ";
         }
         else{
-            return getFrdNickname() + "(" + getFrdName() + ") is offline. ";
+            return getFrdNickname() + "(" + getFrdUsername() + "), offline. ";
         }
     }
 }

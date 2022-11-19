@@ -32,6 +32,9 @@ public class Games {
     public boolean isDeckSupport() {
         return DeckSupport;
     }
+    public void setInLibrary(boolean inLibrary) {
+        this.inLibrary = inLibrary;
+    }
 
     public String SteamDeckCompatability() {
         if (isDeckSupport())
@@ -41,10 +44,10 @@ public class Games {
     }
     public String GameInLibrary() {
         if(isInLibrary() && isInstalled()){
-            return getGameName() + "is in your library and is already installed";
+            return getGameName() + " is in your library and is already installed";
         }
         else if (isInLibrary() && !(isInstalled())){
-            return getGameName() + "is in your library but not yet installed";
+            return getGameName() + " is in your library but not yet installed";
         }
         else {
             return getGameName() + " is not in your library";

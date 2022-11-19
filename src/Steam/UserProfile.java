@@ -4,23 +4,23 @@ public class UserProfile {
     //VARIABLES
     private String username;
     private String realName;
-    private String psw;
+    private String PSW;
     private String location;
     private String gender;
     private String birthday;
     private String email;
-    private double balanace;
+    private double balance;
 
     //CONSTRUCTOR
-    public UserProfile(String usernameStr, String realNameStr, String pswStr, String locationStr, String genderStr, String birthdayStr, String emailStr, double balanceDouble) {
+    public UserProfile(String usernameStr, String realNameStr, String PSWStr, String locationStr, String genderStr, String birthdayStr, String emailStr, double balanceDouble) {
         username = usernameStr;
         realName = realNameStr;
-        psw = pswStr;
+        PSW = PSWStr;
         location = locationStr;
         gender = genderStr;
         birthday = birthdayStr;
         email = emailStr;
-        balanace = balanceDouble;
+        balance = balanceDouble;
     }
 
     //METHODS
@@ -33,7 +33,7 @@ public class UserProfile {
         return realName;
     }
     public String getPsw() {
-        return psw;
+        return PSW;
     }
     public String getLocation() {
         return location;
@@ -47,8 +47,30 @@ public class UserProfile {
     public String getEmail() {
         return email;
     }
-    public double getBalanace() {
-        return balanace;
+    public double getBalance() {
+        return balance;
+    }
+    //SETTERS
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+    public void setPSW(String psw) {
+        this.PSW = psw;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void deposit(double amount) {
+        this.balance += amount;
     }
     /**
      * Displays the user's profile
@@ -57,7 +79,7 @@ public class UserProfile {
         System.out.println("========================================");
         System.out.println("Username:" + getUsername()); 
         System.out.println("Email Address: " + getEmail());
-        System.out.println("Steam Wallet Balance: $" + getBalanace());
+        System.out.println("Steam Wallet Balance: $" + getBalance());
         System.out.println("Store Location: " + getLocation());
         System.out.println("Realname: " + getRealName());
         System.out.println("Gender: " + getGender());

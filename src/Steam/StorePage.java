@@ -38,7 +38,7 @@ public class StorePage extends Games {
 
     //SETTERS
     public void setPercentRating(){
-        percentRating = getPositiveReviews() / getTotalReviews() * 100;
+        percentRating = ((double)getPositiveReviews()/(double)getTotalReviews() * 100);
     }
     public void setRating() {
         if (getPercentRating() >= 90)
@@ -57,7 +57,7 @@ public class StorePage extends Games {
             rating = "Overwhelmingly negative";
     }
     public void setRecentPercentRating() {
-        recentPercentRating = getRecentPositiveReviews() / getRecentReviews() * 100;
+        recentPercentRating = (double)getRecentPositiveReviews()/(double)getRecentReviews() * 100;
     }
     public void setRecentRating() {
         if (getRecentPercentRating() >= 90)
@@ -131,11 +131,11 @@ public class StorePage extends Games {
         System.out.println(GameInLibrary());
         if(!isInLibrary()) {
             System.out.println("Marked Price: " + getMarkedPrice());
-            System.out.println("Price: " + getPrice() + " (-" + getDiscount() + "%)");
+            System.out.println("Price: " + String.format("%.2f", getPrice()) + " (-" + getDiscount() + "%)");
         }
         System.out.println("------------ Reviews ------------");
-        System.out.println(getRating() + " (" + getPercentRating() + "% of " + getTotalReviews() + ") ALL TIME");
-        System.out.println(getRecentRating() + " (" + getRecentPercentRating() + "% of " + getRecentReviews() + ") RECENT");
+        System.out.println(getRating() + " (" + String.format("%.2f", getPercentRating()) + "% of " + getTotalReviews() + ") ALL TIME");
+        System.out.println(getRecentRating() + " (" + String.format("%.2f", getRecentPercentRating()) + "% of " + getRecentReviews() + ") RECENT");
         System.out.println("----- Additional Information -----");
         System.out.println("Developer: " + getDeveloper());
         System.out.println("Publisher: " + getPublisher());
@@ -143,6 +143,5 @@ public class StorePage extends Games {
         System.out.println("Game Length: ~" + getGameLength() + "hours");
         System.out.println(SteamDeckCompatability());
         System.out.println("===================================");
-
     }
 }
