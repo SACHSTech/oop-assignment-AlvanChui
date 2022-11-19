@@ -228,6 +228,7 @@ public class Main {
                                         //create a new object with the data collected
                                         GamesLibrary newGameInLibrary = new GamesLibrary(newGame.getGameName(), false, newGame.isDeckSupport(), 0, "never played", 0, totalAchievements);
                                         gamesLibArrayList.add(newGameInLibrary);
+                                        gameNameArrayList.add(newGameInLibrary.getGameName());
                                         System.out.println("Successfully added the game to your library.");
                                         user.purchase(newGame.getPrice());
                                         System.out.println("You still have $" + user.getBalance() + " in your steam wallet.");
