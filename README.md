@@ -1,6 +1,6 @@
 # ICS4U OOP Assignment
 
-<img src="https://github.com/SACHSTech/ics4u-oop-assignment-jeffreylin-21/blob/main/src/Class%20Diagram.png">
+<img src = "src\OOP Assignment Diagram.png"/>
 
 ## Summary
 
